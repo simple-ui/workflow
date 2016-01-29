@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Workflow builds complex logic-driven, state-based, sequences",
   "main": "lib/index.js",
+  "private": false,
   "files": [
     "lib/",
     "dist/",
