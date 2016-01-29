@@ -12,13 +12,13 @@ Workflow builds complex logic-driven, state-based, sequenceflow. Workflow is use
 Install with npm.
 
 ```sh
-npm install --save adaptiveui\workflow
+npm install --save @adaptiveui\workflow
 ```
 
 Install with bower.
 
 ```sh
-bower install --save adaptiveui\workflow
+bower install --save adaptiveui-workflow
 ```
 
 ## Quick Usage
