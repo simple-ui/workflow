@@ -1,9 +1,10 @@
 {
   "name": "@adaptiveui/workflow",
   "version": "1.0.0",
-  "description": "Workflow defines a workflow of logic-drive events",
+  "description": "Workflow builds complex logic-driven, state-based, sequences",
   "main": "lib/index.js",
   "files": [
+    "lib/",
     "dist/",
     "CHANGELOG.MD",
     "README.MD"

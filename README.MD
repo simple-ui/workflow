@@ -1,37 +1,44 @@
 # Workflow / Adaptive UI
 
-[![Coverage Status](https://coveralls.io/repos/github/adaptiveui/workflow/badge.svg?branch=master)](https://coveralls.io/github/adaptiveui/workflow?branch=master)
+[![Coverage Status](https://coverallflow.io/repos/github/adaptiveui/workflow/badge.svg?branch=master)](https://coverallflow.io/github/adaptiveui/workflow?branch=master)
 [![Build Status](https://travis-ci.org/adaptiveui/workflow.svg?branch=master)](https://travis-ci.org/adaptiveui/workflow)
 [![Dependency Status](https://david-dm.org/adaptiveui/workflow.svg)](https://david-dm.org/adaptiveui/workflow.svg?style=flat-square)
-[![License](https://github.com/adaptiveui/workflow/blob/master/LICENSE)](https://img.shields.io/npm/l/adaptiveui/workflow.svg?style=flat-square)
+[![License](https://github.com/adaptiveui/workflow/blob/master/LICENSE)](https://img.shieldflow.io/npm/l/adaptiveui/workflow.svg?style=flat-square)
 
-Workflow defines a workflow of logic-drive events. A workflow manager for interfaces which helps controlling the state of interface elements. In advanced scenarios, a workflow maps an exterior workflow (for the user) and an interior workflow (which drives an internal process); useful for providing a simple step control for users of a complex process.
+Workflow builds complex logic-driven, state-based, sequenceflow. Workflow is used to define a flow of work where steps in that flow change dynamically. One sequence of work exists as an exterior index for the end-user (in the interface) and an interior index to control a more complex procesflow.
 
 ## Install
 
+Install with npm.
+
 ```sh
-npm i -D adaptiveui\workflow
+npm install --save adaptiveui\workflow
 ```
 
-## Example
+Install with bower.
+
+```sh
+bower install --save adaptiveui\workflow
+```
+
+## Quick Usage
 
 ```js
 import workflowAUI from "adaptiveui/workflow"
 
-var workflow = workflowAUI(['one', 'two', 'three']);
+var flow = workflowAUI(['one', 'two', 'three']);
 
 // many is* methods to control interface state
-assert(workflow.current() === 'one');
-assert(workflow.isBeforeLast() === true);
+assert(flow.current() === 'one');
+assert(flow.isBeforeLast() === true);
 
 // next will return the next value and advance the internal index
-assert(workflow.index === 0);
-assert(workflow.next() === 'two');
-assert(workflow.index === 1);
+assert(flow.index === 0);
+assert(flow.next() === 'two');
+assert(flow.index === 1);
 ```
 
 ## Usage
-
 
 ### Initialize a Workflow
 
@@ -49,36 +56,36 @@ assert((workflowAUI({ '3':4, '5':4, '1':2 })).size() === 3);
 
 #### Moving through a Workflow
 
-A workflow keeps track from an internal index. By default a workflow maps it's index directly to the underlying source. With an array workflow, if `index = 2`, the `current()` you return the item at index 2.
+A Workflow keeps track of an internal index. By default a workflow maps it's index directly to the underlying source. With an array workflow, if `index = 2`, the `current()` you return the item at index 2.
 
 ```js
-var s = workflowAUI([2, 3, 4]);
+var flow = workflowAUI([2, 3, 4]);
 
-s.firstIndex() === 0;       // always 0
-s.lastIndex() === 2;        // last index of an array of 3
-s.index === 0;              // defaults to 0
-s.isFirst() === true;       // index is at 0 which is first
-s.isLast() === false;       // index is at 0 which is not the last
-s.isAfterFirst() === false  // index is at first, so it cannot be after it
-s.isBeforeLast() === true   // index is less than lastIndex()
+flow.firstIndex() === 0;       // always 0
+flow.lastIndex() === 2;        // last index of an array of 3
+flow.index === 0;              // defaults to 0
+flow.isFirst() === true;       // index is at 0 which is first
+flow.isLast() === false;       // index is at 0 which is not the last
+flow.isAfterFirst() === false  // index is at first, so it cannot be after it
+flow.isBeforeLast() === true   // index is less than lastIndex()
 ```
 
 A Workflow bounds the index.
 
 ```js
-var s = workflowAUI([2, 3, 4]);
+var flow = workflowAUI([2, 3, 4]);
 
-s.index = 1;
-s.index === 1;
-
-s.index = -3;     // under, so we set to first
-s.index === 0;
-
-s.index = 6;      // over, so we set to last
-s.index === 2;
-
-s.index = 'as';   // not, a number so we do not change the value
-s.index === 2;
+flow.index = 1;
+flow.index === 1;
+// assign an index under the first index, so we set to first
+flow.index = -3;     
+flow.index === 0;
+// assign an index over the last index, so we set to last
+flow.index = 6;      
+flow.index === 2;
+// assign a non-numerical index, leave the index at the same location
+flow.index = 'as';   
+flow.index === 2;
 ```
 
 #### Objects
@@ -86,11 +93,11 @@ s.index === 2;
 The object stored at the index can be retrieved too.
 
 ```js
-var s = workflowAUI(['two', 'three', 'four']);
+var flow = workflowAUI(['two', 'three', 'four']);
 
-s.current() === 'two';  // defaults to 'two'
-s.peekFirst() === 'two';    // always the first object
-s.peekLast() === 'four';     // always the last object
+flow.current() === 'two';  // defaults to 'two'
+flow.peekFirst() === 'two';    // always the first object
+flow.peekLast() === 'four';     // always the last object
 ```
 
 #### Size
@@ -98,10 +105,10 @@ s.peekLast() === 'four';     // always the last object
 The size of the object being progressed over.
 
 ```js
-var s = workflowAUI([2, 3, 4]);
+var flow = workflowAUI([2, 3, 4]);
 
-s.length === 3;
-s.size() === 3;
+flow.length === 3;
+flow.size() === 3;
 ```
 
 ## License
