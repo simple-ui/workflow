@@ -6,6 +6,10 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### v1.0.0
+### 1.0.1
+
+* Fixed documentation
+
+### 1.0.0
 
 * AdaptiveUI\Workflow initial commit

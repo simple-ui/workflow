@@ -4,14 +4,14 @@
 [![Build Status](https://travis-ci.org/adaptiveui/workflow.svg?branch=master)](https://travis-ci.org/adaptiveui/workflow)
 [![Dependency Status](https://david-dm.org/adaptiveui/workflow.svg)](https://david-dm.org/adaptiveui/workflow.svg?style=flat-square)
 
-Workflow builds complex logic-driven, state-based, sequenceflow. Workflow is used to define a flow of work where steps in that flow change dynamically. One sequence of work exists as an exterior index for the end-user (in the interface) and an interior index to control a more complex procesflow.
+Workflow is a utility to model logic-driven, state-based, user-driven workflows. Workflow is used to define a flow of work where steps in that flow change dynamically. One sequence of work exists as an exterior index for the end-user (in the interface) and an interior index to control a more complex procesflow.
 
 ## Install
 
 Install with npm.
 
 ```sh
-npm install --save @adaptiveui\workflow
+npm install --save @adaptiveui/workflow
 ```
 
 Install with bower.

@@ -1,7 +1,7 @@
 {
   "name": "@adaptiveui/workflow",
-  "version": "1.0.0",
-  "description": "Workflow builds complex logic-driven, state-based, sequences",
+  "version": "1.0.1",
+  "description": "Workflow is a utility to model logic-driven, state-based, user-driven workflows",
   "main": "lib/index.js",
   "private": false,
   "files": [
