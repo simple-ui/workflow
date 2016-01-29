@@ -1,9 +1,8 @@
 # Workflow / Adaptive UI
 
-[![Coverage Status](https://coverallflow.io/repos/github/adaptiveui/workflow/badge.svg?branch=master)](https://coverallflow.io/github/adaptiveui/workflow?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/adaptiveui/workflow/badge.svg?branch=master)](https://coveralls.io/github/adaptiveui/workflow?branch=master)
 [![Build Status](https://travis-ci.org/adaptiveui/workflow.svg?branch=master)](https://travis-ci.org/adaptiveui/workflow)
 [![Dependency Status](https://david-dm.org/adaptiveui/workflow.svg)](https://david-dm.org/adaptiveui/workflow.svg?style=flat-square)
-[![License](https://github.com/adaptiveui/workflow/blob/master/LICENSE)](https://img.shieldflow.io/npm/l/adaptiveui/workflow.svg?style=flat-square)
 
 Workflow builds complex logic-driven, state-based, sequenceflow. Workflow is used to define a flow of work where steps in that flow change dynamically. One sequence of work exists as an exterior index for the end-user (in the interface) and an interior index to control a more complex procesflow.
 
