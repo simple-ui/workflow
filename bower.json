@@ -1,6 +1,6 @@
 {
   "name": "adaptiveui-workflow",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "https://github.com/adaptiveui/workflow",
   "authors": [
     "Michael Jaworski <mjaworski@acm.org>"
@@ -18,7 +18,7 @@
   ],
   "license": "MIT",
   "ignore": [
-    "**/.*",
+    ".*",
     "node_modules",
     "bower_components",
     "test",
