@@ -129,7 +129,7 @@ flow.length === 3;
 flow.size() === 3;
 ```
 
-### Workflow Application
+### Workflow Scenarios
 
 The following example(s) demonstrate the power of a workflow and usefulness of managing two indices.
 

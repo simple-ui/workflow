@@ -16,6 +16,7 @@
     "check": "npm run lint -s && dependency-check package.json --entry lib",
     "watch": "watch 'npm run build' lib test",
     "test": "babel-node test/index.js | tspec",
+    "toc": "doctoc --github --title \"# Changelog\" CHANGELOG.md",
     "prebuild": "npm run check -s && npm run clean -s",
     "build": "mkdir -p dist/; babel --optional runtime lib --out-file dist/release.js",
     "postbuild": "npm run test -s",
@@ -28,7 +29,6 @@
     "minor": "npm version minor && npm publish",
     "major": "npm version major && npm publish",
     "postpublish": "git push origin master --follow-tags",
-    "toc": "doctoc --github --title \"# Changelog\" CHANGELOG.md",
     "benchmark": "babel-node benchmark/index.js"
   },
   "repository": {
