@@ -190,7 +190,7 @@ test('Workflow Reflow', (test) => {
 
   var flow = workflow([3, 4, 5, 6, 7, 8]);
 
-  flow.reflow(function(requestedIndex) {
+  flow.reflow().rule(function(requestedIndex) {
     if (requestedIndex === 2) {
       return 3;
     }
@@ -213,13 +213,11 @@ test('Workflow Reflow Multiple Rules', (test) => {
 
   var flow = workflow([3, 4, 5, 6, 7, 8]);
 
-  flow.reflow(function(requestedIndex) {
+  flow.reflow().rule(function(requestedIndex) {
     if (requestedIndex === 2) {
       return 3;
     }
-  });
-
-  flow.reflow(function(requestedIndex) {
+  }).rule(function(requestedIndex) {
     if (requestedIndex === 3) {
       return 1;
     }
@@ -246,14 +244,12 @@ test('Workflow Reflow Overriden Rule', (test) => {
 
   var flow = workflow([3, 4, 5, 6, 7, 8]);
 
-  flow.reflow(function(requestedIndex, requestedItem) {
+  flow.reflow().rule(function(requestedIndex, requestedItem) {
     if (requestedIndex === 2) {
       test.equal(requestedItem, 5, 'item at index 2 is 5, and is passed in the reflow');
       return 3;
     }
-  });
-
-  flow.reflow(function(requestedIndex) {
+  }).rule(function(requestedIndex) {
     if (requestedIndex === 2) {
       return 0;
     }
@@ -275,6 +271,73 @@ test('Workflow Reflow Overriden Rule', (test) => {
 
 });
 
+test('Workflow Reflow At', (test) => {
+
+  var flow = workflow([3, 4, 5, 6, 7, 8]);
+
+  flow.reflow().ruleAt(2, function(requestedIndex, requestedItem) {
+    test.equal(requestedItem, 5, 'item at index 2 is 5, and is passed in the reflow');
+    return 3;
+  }).ruleAt(2, function(requestedIndex) {
+    return 0;
+  });
+
+  flow.index = 1;
+  test.equal(flow.index, 1, 'reflow allows 1');
+
+  flow.index = 2;
+  test.equal(flow.index, 0, 'reflow from 2 to 0, because the most recent reflow rule overrides all previous rules');
+
+  flow.index = 3;
+  test.equal(flow.index, 3, 'reflow allows 3');
+
+  flow.index = 4;
+  test.equal(flow.index, 4, 'reflow allows 4');
+
+  test.end();
+
+});
+
+test('Workflow Reflow Sets', (test) => {
+
+  var flow = workflow([3, 4, 5, 6, 7, 8]);
+
+  flow.reflow('set-1').rule(function() {
+    console.log('set-1');
+    return 0;
+  });
+
+  flow.reflow('set-2').rule(function() {
+    console.log('set-2');
+    return 1;
+  });
+
+  flow.reflowWith();
+  flow.first();
+  test.equal(flow.index, 0, 'flow starts at the beginning');
+  flow.next();
+  test.equal(flow.index, 1, 'flow continues next to 1');
+  flow.next();
+  test.equal(flow.index, 2, 'flow continues next to 2');
+
+  flow.reflowWith('set-1');
+  flow.first();
+  test.equal(flow.index, 0, 'set-1: flow starts at the beginning');
+  flow.next();
+  test.equal(flow.index, 0, 'set-1: flow continues next to 0');
+  flow.next();
+  test.equal(flow.index, 0, 'set-1: flow continues next to 0');
+
+  flow.reflowWith('set-2');
+  flow.first();
+  test.equal(flow.index, 1, 'set-2: flow starts at 1');
+  flow.next();
+  test.equal(flow.index, 1, 'set-2: flow continues next to 1');
+  flow.next();
+  test.equal(flow.index, 1, 'set-2: flow continues next to 1');
+
+  test.end();
+});
 
 test('Workflow | Scenario "Form Validation"', (test) => {
 
@@ -289,7 +352,7 @@ test('Workflow | Scenario "Form Validation"', (test) => {
     }
   });
 
-  flow.reflow(function(requestedIndex, requestedItem) {
+  flow.reflow().rule(function(requestedIndex, requestedItem) {
     if (!this.current().isValid()) {
       return this.index;
     }
@@ -300,7 +363,6 @@ test('Workflow | Scenario "Form Validation"', (test) => {
   test.end();
 
 });
-
 
 test('Workflow | Scenario "User Permission"', (test) => {
 
@@ -320,7 +382,7 @@ test('Workflow | Scenario "User Permission"', (test) => {
   });
 
   // Rule: Scan to next/previous permitted item
-  flow.reflow(function(requestedIndex) {
+  flow.reflow().rule(function(requestedIndex) {
 
     return this.scanIndex(function(scanIndex, scanItem) {
       return scanItem.isPermitted;
@@ -341,4 +403,41 @@ test('Workflow | Scenario "User Permission"', (test) => {
   test.equal(flow.index, 0, 'a previous will not move because we would be out of bounds');
   test.end();
 
+});
+
+test('Workflow | Scenario "Isolated Parts"', (test) => {
+
+  var flow = workflow([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+  flow.reflow('normal-progression');
+  flow.first();
+  flow.next();
+  flow.next();
+
+  test.equal(flow.index, 2, 'a normal progression of next() x 2 arrives at index 2');
+
+  flow.reflow('skip-odd').rule(function(requestIndex) {
+    return (requestIndex % 2 === 0)
+      ? requestIndex
+      : requestIndex + 1;
+  });
+
+  flow.reflowWith('skip-odd');
+  flow.first();
+  flow.next();
+  flow.next();
+
+  test.equal(flow.index, 4, 'a skip odd progression of next() x 2 arrives at index 4, skipping 1 and 3');
+
+  // Apply a reflow object directly
+  flow.reflowWith(flow.reflow().rule(function(requestIndex) {
+    return requestIndex + 1
+  }));
+
+  flow.first();
+  flow.next();
+  flow.next();
+
+  test.equal(flow.index, 5, 'a direct reflow should also apply');
+  test.end();
 });

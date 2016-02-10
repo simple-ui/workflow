@@ -151,7 +151,7 @@ var flow = workflow({
 });
 
 // Rule: if the current view is not valid, assign the flow to the current flow
-flow.reflow(function(requestedIndex, requestedItem) {
+flow.reflow().rule(function(requestedIndex, requestedItem) {
   if (!this.current().isValid()) {
     return this.index;
   }
@@ -182,7 +182,7 @@ var flow = workflow({
 });
 
 // Rule: Scan to next/previous permitted item
-flow.reflow(function(requestedIndex) {
+flow.reflow().rule(function(requestedIndex) {
 
   return this.scanIndex(function(scanIndex, scanItem) {
     return scanItem.isPermitted;
@@ -197,6 +197,37 @@ flow.index === 2; // it scanned to the next permitted item and not beyond
 flow.previous();
 flow.previous();
 flow.index === 0; // it scanned to the previous permitted item and not beyond
+```
+
+#### Isolated Parts
+
+A workflow may be initialized with multiple sets of reflow objects each defining progression rules. It is useful when providing a workflow to a component that needs to swap progression rules based on application modes.
+
+```javascript
+var flow = workflow([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+// Apply a reflow with no rules, normal +1 rules for next() apply
+flow.reflow('normal-progression');
+flow.first();
+flow.next();
+flow.next();
+
+// Apply a reflow with skipping odd
+flow.reflow('skip-odd').rule(function(requestIndex) {
+  return (requestIndex % 2 === 0)
+    ? requestIndex
+    : requestIndex + 1;
+});
+
+flow.reflowWith('skip-odd');
+flow.first();
+flow.next();
+flow.next();
+
+// Apply a reflow object directly
+flow.reflowWith(flow.reflow().rule(function(requestIndex) {
+  return requestIndex + 1;
+}));
 ```
 
 ## License

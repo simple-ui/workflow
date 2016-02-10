@@ -16,7 +16,7 @@ var reflowFn = function(i) {
   return i;
 };
 
-reflowed.reflow(reflowFn);
+reflowed.reflow().rule(reflowFn);
 
 suite.add('workflow#index (set)', function() {
   flow.index = 1;
@@ -45,7 +45,7 @@ suite.add('workflow#index (set)', function() {
 }).add('workflow#index (get/reflow)', function() {
   reflowed.index;
 }).add('workflow#reflow', function() {
-  flow.reflow(reflowFn);
+  flow.reflow().rule(reflowFn);
 }).on('cycle', function(event) {
   console.log(String(event.target));
 }).on('complete', function() {
