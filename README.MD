@@ -1,9 +1,10 @@
 # Workflow
-#### @adaptiveui/workflow
 
 [![Coverage Status](https://coveralls.io/repos/github/adaptiveui/workflow/badge.svg?branch=master)](https://coveralls.io/github/adaptiveui/workflow?branch=master)
 [![Build Status](https://travis-ci.org/adaptiveui/workflow.svg?branch=master)](https://travis-ci.org/adaptiveui/workflow)
 [![Dependency Status](https://david-dm.org/adaptiveui/workflow.svg)](https://david-dm.org/adaptiveui/workflow.svg?style=flat-square)
+
+#### @adaptiveui/workflow
 
 Workflow is a utility to model logic-driven, state-based workflows. Workflow is used to define a series of steps where step progression can change dynamically. One sequence of work exists as an exterior index for the end-user (in the interface) and an interior index to control a more complex process flow. A workflow is an object which encapsulates all logic related to a set of steps and so provides helper methods to query the state of the flow, to support easy interface control for templates.
 
