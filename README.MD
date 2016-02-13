@@ -1,4 +1,5 @@
-# Workflow / Adaptive UI
+# Workflow
+#### @adaptiveui/workflow
 
 [![Coverage Status](https://coveralls.io/repos/github/adaptiveui/workflow/badge.svg?branch=master)](https://coveralls.io/github/adaptiveui/workflow?branch=master)
 [![Build Status](https://travis-ci.org/adaptiveui/workflow.svg?branch=master)](https://travis-ci.org/adaptiveui/workflow)
