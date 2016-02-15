@@ -2,7 +2,7 @@ var Benchmark = require('benchmark');
 var suite = new Benchmark.Suite;
 
 import _ from 'lodash'
-import workflow from '../lib'
+import Workflow from '../lib'
 
 var initializeWith = {
   size: 10,
@@ -10,42 +10,42 @@ var initializeWith = {
   object: _.zipObject(_.times(10), _.times(10))
 };
 
-var flow = workflow([1, 2, 3, 4, 5, 6, 7]);
-var reflowed = workflow([1, 2, 3, 4, 5, 6, 7]);
+var workflow = Workflow([1, 2, 3, 4, 5, 6, 7]);
+var reflowed = Workflow([1, 2, 3, 4, 5, 6, 7]);
 var reflowFn = function(i) {
   return i;
 };
 
 reflowed.reflow().rule(reflowFn);
 
-suite.add('workflow#index (set)', function() {
-  flow.index = 1;
-}).add('workflow#index (get)', function() {
-  flow.index;
-}).add('workflow#create (array)', function() {
-  workflow(initializeWith.array);
-}).add('workflow#create (size)', function() {
-  workflow(initializeWith.size);
-}).add('workflow#create (object)', function() {
-  workflow(initializeWith.object);
-}).add('workflow#current', function() {
-  flow.current();
-}).add('workflow#next', function() {
-  flow.next();
-}).add('workflow#peekNext', function() {
-  flow.peekNext();
-}).add('workflow#first', function() {
-  flow.first();
-}).add('workflow#peekFirst', function() {
-  flow.peekFirst();
-}).add('workflow#isIndexBounded', function() {
-  flow.isIndexBounded(1);
-}).add('workflow#index (set/reflow)', function() {
+suite.add('Workflow#index (set)', function() {
+  workflow.index = 1;
+}).add('Workflow#index (get)', function() {
+  workflow.index;
+}).add('Workflow#create (array)', function() {
+  Workflow(initializeWith.array);
+}).add('Workflow#create (size)', function() {
+  Workflow(initializeWith.size);
+}).add('Workflow#create (object)', function() {
+  Workflow(initializeWith.object);
+}).add('Workflow#current', function() {
+  workflow.current();
+}).add('Workflow#next', function() {
+  workflow.next();
+}).add('Workflow#peekNext', function() {
+  workflow.peekNext();
+}).add('Workflow#first', function() {
+  workflow.first();
+}).add('Workflow#peekFirst', function() {
+  workflow.peekFirst();
+}).add('Workflow#isIndexBounded', function() {
+  workflow.isIndexBounded(1);
+}).add('Workflow#index (set/reflow)', function() {
   reflowed.index = 1;
-}).add('workflow#index (get/reflow)', function() {
+}).add('Workflow#index (get/reflow)', function() {
   reflowed.index;
-}).add('workflow#reflow', function() {
-  flow.reflow().rule(reflowFn);
+}).add('Workflow#reflow', function() {
+  workflow.reflow().rule(reflowFn);
 }).on('cycle', function(event) {
   console.log(String(event.target));
 }).on('complete', function() {
