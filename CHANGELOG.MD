@@ -10,6 +10,10 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+### 1.1.2
+
+* FIXED include lodash and recommend using lodash-modularize to reduce the weight of the library
+
 ### 1.1.1
 
 * ADDED a create method to Workflow

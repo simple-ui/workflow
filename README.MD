@@ -24,7 +24,7 @@ bower install --save adaptiveui-Workflow
 
 ### Lodash Dependency
 
-This library requires all of lodash. It only imports the methods it needs, supporting use of [rollup.js](http://rollupjs.org/) or [lodash-modularize](https://www.npmjs.com/package/lodash-modularize).
+This library requires a small set of lodash. Use [lodash-modularize](https://www.npmjs.com/package/lodash-modularize) to limit how much of lodash is included in your project.
 
 ## Quick Usage
 
