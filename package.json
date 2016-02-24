@@ -1,5 +1,5 @@
 {
-  "name": "@adaptiveui/workflow",
+  "name": "adaptiveui-workflow",
   "version": "1.1.2",
   "description": "Workflow is a utility to model logic-driven, state-based, user-driven workflows",
   "main": "lib/index.js",

@@ -13,13 +13,13 @@ Workflow is a utility to model logic-driven, state-based workflows. Workflow is 
 Install with npm.
 
 ```sh
-npm install --save @adaptiveui/Workflow
+npm install --save adaptiveui-workflow
 ```
 
 Install with bower.
 
 ```sh
-bower install --save adaptiveui-Workflow
+bower install --save adaptiveui-workflow
 ```
 
 ### Lodash Dependency
