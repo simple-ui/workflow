@@ -1,10 +1,10 @@
 # Workflow
 
-[![Coverage Status](https://coveralls.io/repos/github/adaptiveui/workflow/badge.svg?branch=master)](https://coveralls.io/github/adaptiveui/Workflow?branch=master)
-[![Build Status](https://travis-ci.org/adaptiveui/Workflow.svg?branch=master)](https://travis-ci.org/adaptiveui/workflow)
-[![Dependency Status](https://david-dm.org/adaptiveui/Workflow.svg)](https://david-dm.org/adaptiveui/workflow.svg?style=flat-square)
+[![Coverage Status](https://coveralls.io/repos/github/adaptiveui/workflow/badge.svg?branch=master)](https://coveralls.io/github/adaptiveui/workflow?branch=master)
+[![Build Status](https://travis-ci.org/adaptiveui/workflow.svg?branch=master)](https://travis-ci.org/adaptiveui/workflow)
+[![Dependency Status](https://david-dm.org/adaptiveui/workflow.svg)](https://david-dm.org/adaptiveui/workflow.svg?style=flat-square)
 
-#### @adaptiveui/Workflow
+#### @adaptiveui/workflow
 
 Workflow is a utility to model logic-driven, state-based workflows. Workflow is used to define a series of steps where step progression can change dynamically. One sequence of work exists as an exterior index for the end-user (in the interface) and an interior index to control a more complex process workflow. A Workflow is an object which encapsulates all logic related to a set of steps and so provides helper methods to query the state of the workflow, to support easy interface control for templates.
 
@@ -29,7 +29,7 @@ This library requires a small set of lodash. Use [lodash-modularize](https://www
 ## Quick Usage
 
 ```js
-import Workflow from "adaptiveui/Workflow"
+import Workflow from "adaptiveui/workflow"
 
 var workflow = Workflow(['one', 'two', 'three']);
 
@@ -105,13 +105,13 @@ var workflow = Workflow([2, 3, 4]);
 workflow.index = 1;
 workflow.index === 1;
 // assign an index under the first index, so we set to first
-workflow.index = -3;     
+workflow.index = -3;
 workflow.index === 0;
 // assign an index over the last index, so we set to last
-workflow.index = 6;      
+workflow.index = 6;
 workflow.index === 2;
 // assign a non-numerical index, leave the index at the same location
-workflow.index = 'as';   
+workflow.index = 'as';
 workflow.index === 2;
 ```
 
@@ -148,12 +148,12 @@ Every page/view within a multi-part form should have a validation method.
 
 ```js
 var workflow = Workflow({
-  'step1': {    
+  'step1': {
     // NOTE 'step1' is not valid, so the rule will keep the Workflow at index 0
     isValid: function() { return false; },
     content: {}
   },
-  'step2': {    
+  'step2': {
     isValid: function() { return true; },
     content: {}
   }
