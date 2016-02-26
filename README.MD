@@ -1,8 +1,8 @@
 # Workflow
 
-[![Coverage Status](https://coveralls.io/repos/github/adaptiveui/Workflow/badge.svg?branch=master)](https://coveralls.io/github/adaptiveui/Workflow?branch=master)
-[![Build Status](https://travis-ci.org/adaptiveui/Workflow.svg?branch=master)](https://travis-ci.org/adaptiveui/Workflow)
-[![Dependency Status](https://david-dm.org/adaptiveui/Workflow.svg)](https://david-dm.org/adaptiveui/Workflow.svg?style=flat-square)
+[![Coverage Status](https://coveralls.io/repos/github/adaptiveui/workflow/badge.svg?branch=master)](https://coveralls.io/github/adaptiveui/Workflow?branch=master)
+[![Build Status](https://travis-ci.org/adaptiveui/Workflow.svg?branch=master)](https://travis-ci.org/adaptiveui/workflow)
+[![Dependency Status](https://david-dm.org/adaptiveui/Workflow.svg)](https://david-dm.org/adaptiveui/workflow.svg?style=flat-square)
 
 #### @adaptiveui/Workflow
 
