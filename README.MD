@@ -29,7 +29,7 @@ This library requires a small set of lodash. Use [lodash-modularize](https://www
 ## Quick Usage
 
 ```js
-import Workflow from "adaptiveui/workflow"
+import Workflow from "adaptiveui-workflow"
 
 var workflow = Workflow(['one', 'two', 'three']);
 
