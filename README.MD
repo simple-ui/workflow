@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/adaptiveui/workflow.svg?branch=master)](https://travis-ci.org/adaptiveui/workflow)
 [![Dependency Status](https://david-dm.org/adaptiveui/workflow.svg)](https://david-dm.org/adaptiveui/workflow.svg?style=flat-square)
 
-#### @adaptiveui/workflow
+#### adaptiveui-workflow
 
 Workflow is a utility to model logic-driven, state-based workflows. Workflow is used to define a series of steps where step progression can change dynamically. One sequence of work exists as an exterior index for the end-user (in the interface) and an interior index to control a more complex process workflow. A Workflow is an object which encapsulates all logic related to a set of steps and so provides helper methods to query the state of the workflow, to support easy interface control for templates.
 
@@ -44,99 +44,6 @@ assert(workflow.index === 1);
 ```
 
 ## Usage
-
-### Workflow API
-
-#### Initialize a Workflow
-
-A Workflow can progress over the following types:
-
-* `integer` which is converted to an array `[0, 1, 2, 3, ..., <integer>]`
-* `array`
-* `object`
-
-```js
-assert((Workflow(3)).size() === 3);
-assert((Workflow([2, 3, 4])).size() === 3);
-assert((Workflow({ '3':4, '5':4, '1':2 })).size() === 3);
-```
-
-The Workflow object also doubles as a factory for itself.
-
-```js
-var workflow = Workflow();
-var workflow = Workflow.create();
-```
-
-#### Moving through a Workflow
-
-A Workflow keeps track of an internal index. By default a Workflow maps it's index directly to the underlying source. With an array Workflow, if `index = 2`, the `current()` you return the item at index 2.
-
-```js
-var workflow = Workflow([2, 3, 4]);
-
-workflow.firstIndex() === 0;       // always 0
-workflow.lastIndex() === 2;        // last index of an array of 3
-workflow.index === 0;              // defaults to 0
-workflow.isFirst() === true;       // index is at 0 which is first
-workflow.isLast() === false;       // index is at 0 which is not the last
-workflow.isAfterFirst() === false  // index is at first, so it cannot be after it
-workflow.isBeforeLast() === true   // index is less than lastIndex()
-```
-
-These methods are most useful in a template, this example uses an imaginary templating language.
-
-```html
-<section class="wizard">
-  {{ customViewAtIndex(workflow.index) }}
-  <button *-show="workflow.isAfterFirst()">Previous</button>
-  <button *-show="workflow.isBeforeLast()"
-          *-click="workflow.next()">
-    Next
-  </button>
-</section>
-```
-
-A Workflow bounds the index.
-
-```js
-var workflow = Workflow([2, 3, 4]);
-
-workflow.index = 1;
-workflow.index === 1;
-// assign an index under the first index, so we set to first
-workflow.index = -3;
-workflow.index === 0;
-// assign an index over the last index, so we set to last
-workflow.index = 6;
-workflow.index === 2;
-// assign a non-numerical index, leave the index at the same location
-workflow.index = 'as';
-workflow.index === 2;
-```
-
-#### Workflows of Objects
-
-The object stored at the index can be retrieved too.
-
-```js
-var workflow = Workflow(['two', 'three', 'four']);
-
-workflow.current() === 'two';  // defaults to 'two'
-workflow.peekFirst() === 'two';    // always the first object
-workflow.peekLast() === 'four';     // always the last object
-```
-
-#### Workflow Size
-
-The size of the object being progressed over.
-
-```js
-var workflow = Workflow([2, 3, 4]);
-
-workflow.length === 3;
-workflow.size() === 3;
-```
 
 ### Workflow Scenarios
 
@@ -237,6 +144,99 @@ workflow.next();
 workflow.reflowWith(workflow.reflow().rule(function(requestIndex) {
   return requestIndex + 1;
 }));
+```
+
+### Workflow API
+
+#### Initialize a Workflow
+
+A Workflow can progress over the following types:
+
+* `integer` which is converted to an array `[0, 1, 2, 3, ..., <integer>]`
+* `array`
+* `object`
+
+```js
+assert((Workflow(3)).size() === 3);
+assert((Workflow([2, 3, 4])).size() === 3);
+assert((Workflow({ '3':4, '5':4, '1':2 })).size() === 3);
+```
+
+The Workflow object also doubles as a factory for itself.
+
+```js
+var workflow = Workflow();
+var workflow = Workflow.create();
+```
+
+#### Moving through a Workflow
+
+A Workflow keeps track of an internal index. By default a Workflow maps it's index directly to the underlying source. With an array Workflow, if `index = 2`, the `current()` you return the item at index 2.
+
+```js
+var workflow = Workflow([2, 3, 4]);
+
+workflow.firstIndex() === 0;       // always 0
+workflow.lastIndex() === 2;        // last index of an array of 3
+workflow.index === 0;              // defaults to 0
+workflow.isFirst() === true;       // index is at 0 which is first
+workflow.isLast() === false;       // index is at 0 which is not the last
+workflow.isAfterFirst() === false  // index is at first, so it cannot be after it
+workflow.isBeforeLast() === true   // index is less than lastIndex()
+```
+
+These methods are most useful in a template, this example uses an imaginary templating language.
+
+```html
+<section class="wizard">
+  {{ customViewAtIndex(workflow.index) }}
+  <button *-show="workflow.isAfterFirst()">Previous</button>
+  <button *-show="workflow.isBeforeLast()"
+          *-click="workflow.next()">
+    Next
+  </button>
+</section>
+```
+
+A Workflow bounds the index.
+
+```js
+var workflow = Workflow([2, 3, 4]);
+
+workflow.index = 1;
+workflow.index === 1;
+// assign an index under the first index, so we set to first
+workflow.index = -3;
+workflow.index === 0;
+// assign an index over the last index, so we set to last
+workflow.index = 6;
+workflow.index === 2;
+// assign a non-numerical index, leave the index at the same location
+workflow.index = 'as';
+workflow.index === 2;
+```
+
+#### Workflows of Objects
+
+The object stored at the index can be retrieved too.
+
+```js
+var workflow = Workflow(['two', 'three', 'four']);
+
+workflow.current() === 'two';  // defaults to 'two'
+workflow.peekFirst() === 'two';    // always the first object
+workflow.peekLast() === 'four';     // always the last object
+```
+
+#### Workflow Size
+
+The size of the object being progressed over.
+
+```js
+var workflow = Workflow([2, 3, 4]);
+
+workflow.length === 3;
+workflow.size() === 3;
 ```
 
 ## License
