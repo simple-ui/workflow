@@ -3,6 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/adaptiveui/workflow/badge.svg?branch=master)](https://coveralls.io/github/adaptiveui/workflow?branch=master)
 [![Build Status](https://travis-ci.org/adaptiveui/workflow.svg?branch=master)](https://travis-ci.org/adaptiveui/workflow)
 [![Dependency Status](https://david-dm.org/adaptiveui/workflow.svg)](https://david-dm.org/adaptiveui/workflow.svg?style=flat-square)
+[![npm version](https://badge.fury.io/js/adaptiveui-workflow.svg)](https://badge.fury.io/js/adaptiveui-workflow)
 
 #### adaptiveui-workflow
 
