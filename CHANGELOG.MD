@@ -2,6 +2,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 # Changelog
 
+- [1.2.1](#121)
 - [1.2.0](#120)
 - [1.1.3](#113)
 - [1.1.2](#112)
@@ -12,6 +13,11 @@
 - [1.0.0](#100)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+### 1.2.1
+
+- ADDED JSCS support
+- CONVERTED to SimpleUI
 
 ### 1.2.0
 
@@ -49,4 +55,4 @@
 
 ### 1.0.0
 
-* INITIAL @adaptiveui\workflow commit
+* INITIAL @simple-ui\workflow commit

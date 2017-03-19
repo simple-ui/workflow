@@ -1,7 +1,7 @@
 {
-  "name": "adaptiveui-workflow",
-  "version": "1.2.0",
-  "homepage": "https://github.com/adaptiveui/workflow",
+  "name": "simple-ui_workflow",
+  "version": "1.2.1",
+  "homepage": "https://github.com/simple-ui/workflow",
   "authors": [
     "Michael Jaworski <mjaworski@acm.org>"
   ],

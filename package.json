@@ -1,6 +1,6 @@
 {
-  "name": "adaptiveui-workflow",
-  "version": "1.2.0",
+  "name": "simple-ui_workflow",
+  "version": "1.2.1",
   "description": "Workflow is a utility to model logic-driven, state-based, user-driven workflows",
   "main": "lib/index.js",
   "private": false,
@@ -11,26 +11,26 @@
     "README.MD"
   ],
   "scripts": {
-    "clean": "rimraf dist",
-    "lint": "eslint lib test",
-    "check": "npm run lint -s && dependency-check package.json --entry lib",
+    "clean": "node_modules/.bin/rimraf dist",
+    "lint": "node_modules/.bin/jscs lib",
+    "check": "npm run lint -s && node_modules/.bin/dependency-check package.json --entry lib",
     "watch": "watch 'npm run build' lib test",
-    "test": "babel-node test/index.js | tspec",
-    "toc": "doctoc --github --title \"# Changelog\" CHANGELOG.md",
+    "test": "node_modules/.bin/babel-node test/index.js | tspec",
+    "toc": "node_modules/.bin/doctoc --github --title \"# Changelog\" CHANGELOG.md",
     "prebuild": "npm run check -s && npm run clean -s",
-    "build": "mkdir -p dist/; babel --optional runtime lib --out-file dist/release.js; uglifyjs --compress --mangle -- dist/release.js > dist/release.min.js",
+    "build": "mkdir -p dist/; node_modules/.bin/babel --optional runtime lib --out-file dist/release.js; node_modules/.bin/uglifyjs --compress --mangle -- dist/release.js > dist/release.min.js",
     "postbuild": "npm run test -s",
-    "coverage": "babel-node node_modules/isparta/bin/isparta cover test/index.js",
-    "coveralls": "npm run coverage -s && coveralls < coverage/lcov.info",
+    "coverage": "node_modules/.bin/babel-node node_modules/isparta/bin/isparta cover test/index.js",
+    "coveralls": "npm run coverage -s && node_modules/.bin/coveralls < coverage/lcov.info",
     "postcoveralls": "rimraf ./coverage",
     "prepublish": "npm run build -s",
     "deploy": "git pull --rebase origin master && git push origin master",
     "postpublish": "git push origin master --follow-tags",
-    "benchmark": "babel-node benchmark/index.js"
+    "benchmark": "node_modules/.bin/babel-node benchmark/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:adaptiveui/workflow.git"
+    "url": "git@github.com:simple-ui/workflow.git"
   },
   "keywords": [
     "adaptive",
@@ -40,9 +40,9 @@
   "author": "Michael Jaworski <mjaworski@acm.org>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/adaptiveui/workflow/issues"
+    "url": "https://github.com/simple-ui/workflow/issues"
   },
-  "homepage": "https://github.com/adaptiveui/workflow#readme",
+  "homepage": "https://github.com/simple-ui/workflow#readme",
   "devDependencies": {
     "babel-cli": "6.4.5",
     "babel-core": "6.4.5",
@@ -61,6 +61,7 @@
     "watch": "0.17.1"
   },
   "dependencies": {
+    "jscs": "3.0.7",
     "lodash": "4.0.0"
   }
 }
