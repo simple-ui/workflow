@@ -14,6 +14,10 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+### 1.2.2
+
+- FIXED documentation for how to install the code
+
 ### 1.2.1
 
 - ADDED JSCS support

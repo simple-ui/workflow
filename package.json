@@ -1,6 +1,6 @@
 {
-  "name": "simple-ui_workflow",
-  "version": "1.2.1",
+  "name": "@simple-ui/workflow",
+  "version": "1.2.2",
   "description": "Workflow is a utility to model logic-driven, state-based, user-driven workflows",
   "main": "lib/index.js",
   "private": false,

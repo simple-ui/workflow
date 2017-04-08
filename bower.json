@@ -1,6 +1,6 @@
 {
-  "name": "simple-ui_workflow",
-  "version": "1.2.1",
+  "name": "@simple-ui/workflow",
+  "version": "1.2.2",
   "homepage": "https://github.com/simple-ui/workflow",
   "authors": [
     "Michael Jaworski <mjaworski@acm.org>"
