@@ -3,9 +3,9 @@
 [![Coverage Status](https://coveralls.io/repos/github/simple-ui/workflow/badge.svg?branch=master)](https://coveralls.io/github/simple-ui/workflow?branch=master)
 [![Build Status](https://travis-ci.org/simple-ui/workflow.svg?branch=master)](https://travis-ci.org/simple-ui/workflow)
 [![Dependency Status](https://david-dm.org/simple-ui/workflow.svg)](https://david-dm.org/simple-ui/workflow.svg?style=flat-square)
-[![npm version](https://badge.fury.io/js/simple-ui_workflow.svg)](https://badge.fury.io/js/simple-ui_workflow)
+[![npm version](https://badge.fury.io/js/@simple-ui/workflow.svg)](https://badge.fury.io/js/@simple-ui/workflow)
 
-#### simple-ui_workflow
+#### @simple-ui/workflow
 
 Workflow is a utility to model logic-driven, state-based workflows. Workflow is used to define a series of steps where step progression can change dynamically. One sequence of work exists as an exterior index for the end-user (in the interface) and an interior index to control a more complex process workflow. A Workflow is an object which encapsulates all logic related to a set of steps and so provides helper methods to query the state of the workflow, to support easy interface control for templates.
 
@@ -14,13 +14,13 @@ Workflow is a utility to model logic-driven, state-based workflows. Workflow is 
 Install with npm.
 
 ```sh
-npm install --save simple-ui_workflow
+npm install --save @simple-ui/workflow
 ```
 
 Install with bower.
 
 ```sh
-bower install --save simple-ui_workflow
+bower install --save @simple-ui/workflow
 ```
 
 ### Lodash Dependency
@@ -30,7 +30,7 @@ This library requires a small set of lodash. Use [lodash-modularize](https://www
 ## Quick Usage
 
 ```js
-import Workflow from "simple-ui_workflow"
+import Workflow from "@simple-ui/workflow"
 
 var workflow = Workflow(['one', 'two', 'three']);
 
